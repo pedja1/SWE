@@ -1,4 +1,4 @@
-package com.sonyericsson.extras.liveware.extension.controlsample;
+package com.example.swlock;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
