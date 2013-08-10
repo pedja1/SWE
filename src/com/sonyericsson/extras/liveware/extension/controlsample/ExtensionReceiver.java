@@ -30,7 +30,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package com.sonyericsson.extras.liveware.extension.controlsample;
 
-import com.sonyericsson.extras.liveware.aef.registration.Registration;
+//import com.sonyericsson.extras.liveware.aef.registration.Registration;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -46,7 +46,7 @@ public class ExtensionReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(final Context context, final Intent intent) {
         Log.d("", "onReceive: " + intent.getAction());
-        System.out.println(intent.getIntExtra(Registration.Intents.EXTRA_CONNECTION_STATUS, 0));
+        //System.out.println(intent.getIntExtra(Registration.Intents.EXTRA_CONNECTION_STATUS, 0));
         //intent.setClass(context, SampleExtensionService.class);
         //context.startService(intent);
     }
