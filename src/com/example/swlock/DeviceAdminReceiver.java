@@ -1,6 +1,5 @@
 package com.example.swlock;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -12,7 +11,7 @@ import android.util.Log;
  * method onEnabled().
  */
 public class DeviceAdminReceiver extends android.app.admin.DeviceAdminReceiver {
-        static final String TAG = "DemoDeviceAdminReceiver";
+        static final String TAG = "SWDeviceAdminReceiver";
 
         /** Called when this application is approved to be a device administrator. */
         @Override

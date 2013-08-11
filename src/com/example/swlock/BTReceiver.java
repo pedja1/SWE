@@ -36,9 +36,12 @@ public class BTReceiver extends BroadcastReceiver
 		
 		if (device.getAddress().equals(prefs.getString(AppData.SP_KEY_DEVICE_MAC, "")))
 		{
+			SharedPreferences.Editor editor = prefs.edit();
 			if (intent.getAction().equals(BluetoothDevice.ACTION_ACL_CONNECTED))
 			{
 				Log.d("Z", "SmartWatch Connected");
+				editor.putBoolean(AppData.SP_KEY_DEVICE_CONNECTED, true);
+				LockActivity.exit();
 			}
 			if (intent.getAction().equals(BluetoothDevice.ACTION_ACL_DISCONNECTED)
 					|| intent.equals(BluetoothDevice.ACTION_ACL_DISCONNECT_REQUESTED))
@@ -47,8 +50,10 @@ public class BTReceiver extends BroadcastReceiver
 				if(bluetoothAdapter.isEnabled())
 				{
 					mDPM.lockNow();
+					editor.putBoolean(AppData.SP_KEY_DEVICE_CONNECTED, false);
 				}
 			}
+			editor.apply();
 		}
 	}
 

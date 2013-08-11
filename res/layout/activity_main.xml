@@ -1,27 +1,60 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical">
+    android:orientation="vertical" >
 
-	<LinearLayout
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"
-	    android:orientation="horizontal" >
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="SmartWatch Lock Enabled"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:orientation="horizontal" >
 
-    <ToggleButton
-        android:id="@+id/toggleLock"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="SmartWatch Lock Enabled"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <ToggleButton
+            android:id="@+id/toggleLock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textOff="Off"
+            android:textOn="On" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textOff="Off"
-        android:textOn="On" />
-	</LinearLayout>
-	
+        android:layout_marginTop="5dp" >
+
+        <RelativeLayout
+            android:id="@+id/RelativeLayout1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lock on Wake"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView2"
+                android:text="Relock device when screen is turned on if SmartWatch isn't connected" />
+        </RelativeLayout>
+
+        <CheckBox
+            android:id="@+id/relockOnWake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical" />
+
+    </LinearLayout>
+
 </LinearLayout>

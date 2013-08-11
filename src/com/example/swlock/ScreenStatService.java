@@ -5,6 +5,7 @@ import com.example.swlock.utility.AppData;
 import android.app.*;
 import android.content.*;
 import android.os.*;
+import android.support.v4.app.NotificationCompat;
 
 public class ScreenStatService extends Service
 {
@@ -14,16 +15,19 @@ public class ScreenStatService extends Service
     @Override
     public void onCreate()
 	{
-		Notification notification = new Notification(R.drawable.icon, getText(R.string.app_name),
-													 System.currentTimeMillis());
-		Intent notificationIntent = new Intent(this, MainActivity.class);
+    	NotificationCompat.Builder mBuilder =
+    	        new NotificationCompat.Builder(this)
+    	        .setSmallIcon(R.drawable.icon)
+    	        .setContentTitle(getString(R.string.app_name))
+    	        .setContentText("Service Enabled");
+    	Intent notificationIntent = new Intent(this, MainActivity.class);
 		PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
-		notification.setLatestEventInfo(this, getText(R.string.app_name),
-										getText(R.string.app_name), pendingIntent);
-		
+		mBuilder.setContentIntent(pendingIntent);
+    	Notification notification = mBuilder.build();
+
 		startForeground(ONGOING_NOTIFICATION_ID, notification);
 		
-		IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_ON);
+		IntentFilter filter = new IntentFilter(/*Intent.ACTION_SCREEN_ON*/Intent.ACTION_USER_PRESENT);
         mReceiver = new ScreenStatReceiver();
         registerReceiver(mReceiver, filter);
         if(AppData.LOGGING)System.out.println("ScreenStatService onCreate");

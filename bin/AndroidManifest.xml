@@ -30,7 +30,7 @@
         <receiver
             android:name="com.example.swlock.DeviceAdminReceiver"
             android:description="@string/device_admin_desc"
-            android:label="Device Admin Receiver"
+            android:label="@string/device_admin_title"
             android:permission="android.permission.BIND_DEVICE_ADMIN" >
             <meta-data
                 android:name="android.app.device_admin"
@@ -50,7 +50,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name="com.example.swlock.ScreenStatService"></service>
+
+        <service android:name="com.example.swlock.ScreenStatService" >
+            <intent-filter>
+                <action android:name="android.intent.action._BOOT_COMPLETED" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name="com.example.swlock.LockActivity"
+            android:label="@string/title_activity_lock"
+            android:theme="@android:style/Theme.Dialog"  >      
+            </activity>
     </application>
 
 </manifest>
