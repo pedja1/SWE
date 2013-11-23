@@ -7,7 +7,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="If your SmartWatch is already paired, please select it from the list.\nOtherwise select &quot;Not Paired Yet&quot;" />
+        android:text="@string/paired_devices_msg" />
 
     <ListView
         android:id="@+id/list"

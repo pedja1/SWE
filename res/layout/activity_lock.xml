@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="Enter your password to unlock Device\n\nConnecting your Smart Watch will automatically unlock device." />
+        android:text="@string/unlock_dialog_message" />
 
     <EditText
         android:id="@+id/password"
@@ -45,7 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Cancel" />
+            android:text="@string/cancel" />
 
     </LinearLayout>
 

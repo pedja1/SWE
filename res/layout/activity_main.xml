@@ -10,10 +10,10 @@
 
         <TextView
             android:id="@+id/textView1"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="SmartWatch Lock Enabled"
+            android:text="@string/smartwatch_lock_enabled"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <ToggleButton
@@ -39,14 +39,14 @@
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lock on Wake"
+                android:text="@string/lock_on_wake"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView2"
-                android:text="Relock device when screen is turned on if SmartWatch isn't connected" />
+                android:text="@string/lock_on_wake_msg" />
         </RelativeLayout>
 
         <CheckBox
@@ -61,6 +61,6 @@
             android:id="@+id/btnChangePassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Change Password" />
+            android:text="@string/change_password" />
 
 </LinearLayout>

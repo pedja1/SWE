@@ -106,7 +106,7 @@ public class LockActivity extends Activity implements Runnable, OnClickListener
 				}
 				else
 				{
-					password.setError("Wrong Password");
+					password.setError(getString(R.string.wrong_password));
 				}
 			break;
 			case R.id.cancel:

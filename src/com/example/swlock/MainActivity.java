@@ -45,7 +45,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener, O
 				.getDefaultAdapter();
 		if (mBluetoothAdapter == null)
 		{
-			bluetoothError("Looks like you device doesnt support Bluetooth\nBluetooth is required for this application to work!");
+			bluetoothError(getString(R.string.bluetooth_not_supported));
 		}
 		else
 		{
@@ -79,8 +79,8 @@ public class MainActivity extends Activity implements OnCheckedChangeListener, O
 	private void setupPassword(final boolean setupSmartWatch)
 	{
 		AlertDialog.Builder b = new AlertDialog.Builder(this);
-		b.setTitle("Set Unlock Password");
-		b.setMessage("Enter New Password");
+		b.setTitle(R.string.set_unlock_password);
+		b.setMessage(R.string.enter_new_password);
 		b.setCancelable(false);
 		final EditText ed = new EditText(this);
 		b.setPositiveButton("Save", new DialogInterface.OnClickListener()
@@ -95,7 +95,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener, O
 				if(setupSmartWatch)setupSmartWatch();
 			}
 		});
-		b.setNegativeButton("Cancel", new DialogInterface.OnClickListener()
+		b.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener()
 		{
 			
 			@Override
@@ -141,10 +141,10 @@ public class MainActivity extends Activity implements OnCheckedChangeListener, O
 				}
 			});
 			AlertDialog.Builder b = new AlertDialog.Builder(this);
-			b.setTitle("Paired Devices Detected");
+			b.setTitle(R.string.paired_devices_detected);
 			b.setCancelable(false);
 			
-			b.setNeutralButton("Not Paired Yet", new DialogInterface.OnClickListener()
+			b.setNeutralButton(R.string.not_paired_yet, new DialogInterface.OnClickListener()
 			{
 				
 				@Override
@@ -161,9 +161,9 @@ public class MainActivity extends Activity implements OnCheckedChangeListener, O
 		{
 			AlertDialog.Builder b = new AlertDialog.Builder(this);
 			b.setCancelable(false);
-			b.setTitle("Smart Watch Not Paired");
-			b.setMessage("Please Pair your Smart Watch. Click OK to open Bluetooth Settings");
-			b.setPositiveButton("OK", new DialogInterface.OnClickListener()
+			b.setTitle(R.string.smart_watch_not_paired);
+			b.setMessage(R.string.please_pair_your_smart_watch_click_ok_to_open_bluetooth_settings);
+			b.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener()
 			{
 				
 				@Override
@@ -177,7 +177,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener, O
 		            startActivityForResult(intent, REQUEST_PAIR_DEVICE);
 				}
 			});
-			b.setNegativeButton("Cancel", new DialogInterface.OnClickListener()
+			b.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener()
 			{
 				
 				@Override
@@ -195,9 +195,9 @@ public class MainActivity extends Activity implements OnCheckedChangeListener, O
 	{
 		AlertDialog.Builder b = new AlertDialog.Builder(this);
 		b.setCancelable(false);
-		b.setTitle("Error!");
+		b.setTitle(R.string.error_);
 		b.setMessage(errorMessage);
-		b.setPositiveButton("Exit", new DialogInterface.OnClickListener()
+		b.setPositiveButton(R.string.exit, new DialogInterface.OnClickListener()
 		{
 
 			@Override
@@ -243,9 +243,9 @@ public class MainActivity extends Activity implements OnCheckedChangeListener, O
 	{
 		AlertDialog.Builder b = new AlertDialog.Builder(this);
 		b.setCancelable(false);
-		b.setMessage(isEnabled ? "This application is already a device admin"
-				: "In Order to use this app you need to enable it as a device administrator");
-		b.setPositiveButton("OK", new DialogInterface.OnClickListener()
+		b.setMessage(isEnabled ? getString(R.string.already_admin)
+				: getString(R.string.set_admin));
+		b.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener()
 		{
 
 			@Override
@@ -259,7 +259,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener, O
 					intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN,
 							demoDeviceAdmin);
 					intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION,
-							"Enabling this application as a Device Administrator will allow it to lock device when Smart Watch has been disconnected!");
+							R.string.admin_explanation);
 					startActivityForResult(intent, ACTIVATION_REQUEST);
 				}
 				else
@@ -270,7 +270,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener, O
 		});
 		if (!isEnabled)
 		{
-			b.setNegativeButton("Cancel", new DialogInterface.OnClickListener()
+			b.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener()
 			{
 
 				@Override
@@ -298,14 +298,14 @@ public class MainActivity extends Activity implements OnCheckedChangeListener, O
 				 * PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
 				 * PackageManager.DONT_KILL_APP);
 				 */
-				Toast.makeText(this, "Device admin enabled", Toast.LENGTH_LONG)
+				Toast.makeText(this, R.string.admin_enabled, Toast.LENGTH_LONG)
 						.show();
 				//finish();
 
 			}
 			else
 			{
-				Toast.makeText(this, "Error enabling device admin",
+				Toast.makeText(this, R.string.error_enabling_device_admin,
 						Toast.LENGTH_LONG).show();
 				Log.i(TAG, "Administration enable FAILED!");
 				finish();
@@ -318,7 +318,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener, O
 			}
 			else
 			{
-				bluetoothError("Filed to enable Bluetooth.\nBluetooth is required for this application to work!");
+				bluetoothError(getString(R.string.bluetooth_error));
 			}
 			return;
 		case REQUEST_PAIR_DEVICE:

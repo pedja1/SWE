@@ -13,5 +13,30 @@
     <string name="title_activity_lock">.</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="bluetooth_not_supported">Looks like you device doesnt support Bluetooth\nBluetooth is required for this application to work!</string>
+    <string name="set_unlock_password">Set Unlock Password</string>
+    <string name="enter_new_password">Enter New Password</string>
+    <string name="cancel">Cancel</string>
+    <string name="paired_devices_detected">Paired Devices Detected</string>
+    <string name="not_paired_yet">Not Paired Yet</string>
+    <string name="smart_watch_not_paired">Smart Watch Not Paired</string>
+    <string name="please_pair_your_smart_watch_click_ok_to_open_bluetooth_settings">Please Pair your Smart Watch. Click OK to open Bluetooth Settings</string>
+    <string name="ok">OK</string>
+    <string name="error_">Error!</string>
+    <string name="exit">Exit</string>
+    <string name="already_admin">This application is already a device admin</string>
+    <string name="set_admin">In Order to use this app you need to enable it as a device administrator</string>
+    <string name="admin_explanation">Enabling this application as a Device Administrator will allow it to lock device when Smart Watch has been disconnected!</string>
+    <string name="admin_enabled">Device admin enabled</string>
+    <string name="error_enabling_device_admin">Error enabling device admin</string>
+    <string name="bluetooth_error">Filed to enable Bluetooth.\nBluetooth is required for this application to work!</string>
+    <string name="wrong_password">Wrong Password</string>
+    <string name="service_enabled">Service Enabled</string>
+    <string name="unlock_dialog_message">Enter your password to unlock Device\\n\\nConnecting your Smart Watch will automatically unlock device.</string>
+    <string name="smartwatch_lock_enabled">SmartWatch Lock Enabled</string>
+    <string name="lock_on_wake">Lock on Wake</string>
+    <string name="lock_on_wake_msg">Relock device when screen is turned on if SmartWatch isn\'t connected</string>
+    <string name="change_password">Change Password</string>
+    <string name="paired_devices_msg">If your SmartWatch is already paired, please select it from the list.\\nOtherwise select &amp;quot;Not Paired Yet&amp;quot;</string>
 
 </resources>

@@ -19,7 +19,7 @@ public class ScreenStatService extends Service
     	        new NotificationCompat.Builder(this)
     	        .setSmallIcon(R.drawable.icon)
     	        .setContentTitle(getString(R.string.app_name))
-    	        .setContentText("Service Enabled");
+    	        .setContentText(getString(R.string.service_enabled));
     	Intent notificationIntent = new Intent(this, MainActivity.class);
 		PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
 		mBuilder.setContentIntent(pendingIntent);
