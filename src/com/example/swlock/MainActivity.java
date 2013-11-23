@@ -18,10 +18,11 @@ import android.preference.PreferenceManager;
 import android.util.*;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.*;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 
-public class MainActivity extends Activity implements OnCheckedChangeListener
+public class MainActivity extends Activity implements OnCheckedChangeListener, OnClickListener
 {
 	static final String TAG = "MainActivity";
 	static final int ACTIVATION_REQUEST = 47; // identifies our request id
@@ -32,6 +33,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener
 	SharedPreferences prefs;
 	BluetoothAdapter mBluetoothAdapter;
 	AlertDialog dialog;
+	Button btnChangePassword;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -57,7 +59,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener
 				}
 				else
 				{
-					setupPassword();
+					setupPassword(true);
 				}
 			}
 			else if(prefs.getString(AppData.SP_KEY_DEVICE_MAC, "").length() == 0)
@@ -69,10 +71,12 @@ public class MainActivity extends Activity implements OnCheckedChangeListener
 				continueApp();
 			}
 		}
+		btnChangePassword = (Button)findViewById(R.id.btnChangePassword);
+		btnChangePassword.setOnClickListener(this);
 
 	}
 
-	private void setupPassword()
+	private void setupPassword(final boolean setupSmartWatch)
 	{
 		AlertDialog.Builder b = new AlertDialog.Builder(this);
 		b.setTitle("Set Unlock Password");
@@ -88,7 +92,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener
 				SharedPreferences.Editor editor = prefs.edit();
 				editor.putString(AppData.SP_KEY_PASSWORD, AppData.md5(ed.getText().toString()));
 				editor.apply();
-				setupSmartWatch();
+				if(setupSmartWatch)setupSmartWatch();
 			}
 		});
 		b.setNegativeButton("Cancel", new DialogInterface.OnClickListener()
@@ -97,7 +101,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener
 			@Override
 			public void onClick(DialogInterface dialog, int which)
 			{
-				finish();
+				if(setupSmartWatch)finish();
 			}
 		});
 		b.setView(ed);
@@ -310,7 +314,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener
 		case REQUEST_ENABLE_BT:
 			if (resultCode == Activity.RESULT_OK)
 			{
-				continueApp();
+				setupPassword(true);
 			}
 			else
 			{
@@ -376,6 +380,18 @@ public class MainActivity extends Activity implements OnCheckedChangeListener
 			break;
 		}
 		editor.apply();
+	}
+
+	@Override
+	public void onClick(View v)
+	{
+		switch(v.getId())
+		{
+		case R.id.btnChangePassword:
+			setupPassword(false);
+			break;
+		}
+		
 	}
 
 }

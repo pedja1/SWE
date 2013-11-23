@@ -56,5 +56,11 @@
             android:layout_gravity="center_vertical" />
 
     </LinearLayout>
+    
+        <Button
+            android:id="@+id/btnChangePassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Change Password" />
 
 </LinearLayout>
